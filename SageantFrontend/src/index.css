@@ -1,0 +1,202 @@
+@import '@fontsource-variable/figtree';
+
+:root {
+  color-scheme: light;
+
+  /* Brand palette (see CLAUDE.md). Change colours here only. */
+  --teal: #16403b;          /* deep teal-slate: headings, small dark anchors */
+  --jade: #2fa58a;          /* main brand colour: fills, dots, rings, decoration */
+  --jade-strong: #1f7a66;   /* jade darkened to pass 4.5:1 with white: buttons, link text */
+  --sage: #9cb8a4;          /* panels and soft backgrounds */
+  --mint-soft: #d6ebdd;     /* light surfaces and hover states */
+  --cream: #f5f8f2;         /* page background */
+  --paper: #fbfdf9;         /* lighter than the page, for form sides */
+  --ivory: #f5f8f2;
+  --white: #ffffff;
+  --slate: #475569;
+  --brass: #b8954a;         /* the single small accent */
+  --terracotta: #c0683f;    /* alerts and highlights */
+  --sky: #3b82f6;
+  --mint: #10b981;
+  --amber: #f59e0b;
+  --rose: #ef4444;
+
+  /* Roles */
+  --bg: var(--cream);
+  --surface: var(--white);
+  --ink: var(--teal);
+  --text: var(--teal);
+  --text-muted: var(--slate);
+  --line: color-mix(in srgb, var(--sage) 38%, var(--cream));
+  --green: var(--jade-strong);
+  --tint: color-mix(in srgb, var(--mint-soft) 80%, var(--cream));
+  --warm: color-mix(in srgb, var(--mint-soft) 70%, var(--cream));
+  --focus: var(--jade-strong);
+  --on-dark: var(--cream);
+  --on-dark-muted: color-mix(in srgb, var(--cream) 78%, var(--teal));
+
+  /* Darker inks for text on tinted chips (bright fills fail contrast as text) */
+  --brass-ink: #6f531a;
+  --terracotta-ink: #9a4a27;
+  --amber-ink: #8a5100;
+  --sky-ink: #1f5fd0;
+
+  --page: 72rem;
+  --gutter: 1.5rem;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Figtree Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--sage) 35%, transparent);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.125rem;
+  border: 0;
+  border-radius: 0.75rem;
+  font: inherit;
+  font-weight: 650;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--jade-strong);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--teal);
+}
+
+.btn-quiet {
+  background: transparent;
+  color: var(--text);
+}
+
+.btn-quiet:hover {
+  background: var(--tint);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1.5px var(--teal);
+}
+
+.btn-outline:hover {
+  background: var(--tint);
+}
+
+.btn-light {
+  background: var(--ivory);
+  color: var(--teal);
+}
+
+.btn-light:hover {
+  background: var(--white);
+}
+
+.btn-ghost-light {
+  background: transparent;
+  color: var(--ivory);
+  box-shadow: inset 0 0 0 1.5px var(--sage);
+}
+
+.btn-ghost-light:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.btn-large {
+  min-height: 3.25rem;
+  padding-inline: 1.5rem;
+  font-size: 1.0625rem;
+}
+
+.btn-small {
+  min-height: 2.25rem;
+  padding: 0.25rem 0.875rem;
+  border-radius: 0.625rem;
+}
+
+/* Large monitors: scale everything (it is all in rem) so the page doesn't look tiny. */
+@media (min-width: 1800px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 2400px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+/* Touch devices: no text auto-resize, no 300ms tap delay, no grey tap flash. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+a,
+button,
+label,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+label.btn {
+  touch-action: manipulation;
+}
+
+.btn {
+  position: relative;
+}
