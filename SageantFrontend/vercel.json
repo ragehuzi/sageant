@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://sageant-api-gfeyeddhhsbcdvcr.eastasia-01.azurewebsites.net/api/:path*"
+    },
+    {
+      "source": "/:path((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
